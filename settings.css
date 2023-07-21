@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+img {
+    width: calc(20vw - 1px);
+    height: calc(20vw - 1px);
+}
+
+body {
+    background-color: #313338;
+    color: #f2f3f5;
+    font-family: 'Roboto', sans-serif;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.pack-header {
+    background-color: #2b2d31;
+}
+
+.pack-name {
+    font-size: 30px;   
+}
+
+#showCreateModal {
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+/*.sticker {
+    float: left;
+}*/
+
+.pack-stickers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sticker .sticker-name {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .sticker:hover .sticker-name {
+    visibility: visible;
+  }

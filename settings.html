@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MoleMoji - Settings</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <header>MoleMoji client</header>
+
+    <dialog id="createDialog">
+        
+        <input type="text" id="packName" placeholder="Pack name">
+        <br>
+        <input type="text" id="packAuthor" placeholder="Author">
+        <br>
+        <input type="text" id="packDescription" placeholder="Description">
+        <br>
+        <button id="closeCreateModal">Close</button>
+        <button id="createPackButton">Create new pack</button>
+    </dialog>
+
+    <dialog id="createStickerDialog">
+        
+        <p>Creating a sticker: <span id="createStickerPack"></span></p>
+       
+        <input type="text" id="stickerName" placeholder="Sticker name">
+        <br>
+        <input type="text" id="stickerDescription" placeholder="Description">
+        <br>
+        <input type="text" id="stickerFile" placeholder="Main file"> <button id="stickerFileButton">Select file</button>
+        <br>
+        <input type="text" id="stickerPreviewFile" placeholder="Preview file"> <button id="stickerPreviewFileButton">Select file</button>
+        <br>
+        <button id="closeCreateStickerModal">Close</button>
+        <button id="createStickerButton">Create new sticker</button>
+    </dialog>
+
+    <button id="showCreateModal">+</button>
+
+    <div id="createPack">
+        
+    </div>
+
+    <div id="stickers"></div>
+
+    <script src="settingsClient.js"></script>
+</body>
+</html>
