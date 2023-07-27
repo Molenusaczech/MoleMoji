@@ -11,6 +11,29 @@ const createSticker = async (packName) => {
     document.getElementById("createStickerDialog").showModal();
 }
 
+const deleteSticker = async (packname, stickerName) => {
+
+    if (!confirm("Are you sure you want to delete this sticker?")) return;
+
+    window.setVar.deleteSticker(packname, stickerName).then(() => {
+        renderStickers();
+    });
+}
+
+const deletePack = async (packname) => {
+    if (!confirm("Are you sure you want to delete this pack?")) return;
+    if (!confirm("Are you sure? This action will PERMANENTLY delete this pack and all stickers in it!")) return;
+    if (!confirm("This is the last warning! This will delete the pack and all of its stickers!")) return;
+
+    window.setVar.deletePack(packname).then(() => {
+        renderStickers();
+    });
+}
+
+const openFolder = async () => {
+    window.setVar.openFolder();
+}
+
 /*document.getElementById("popupPos").addEventListener("click", function() {
     let popupX = document.getElementById("popupX").value;
     let popupY = document.getElementById("popupY").value;

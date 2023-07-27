@@ -21,15 +21,19 @@ contextBridge.exposeInMainWorld('setVar', {
         result.forEach(pack => {
             html += `<div class="pack">
                 <div class="pack-header">
-                    <div class="pack-name">${pack.name}</div>
+                    <div class="pack-name">${pack.name} (by ${pack.author})</div>
                     <div class="pack-desc">${pack.description}</div>
                     <button class="pack-create" onclick="createSticker('${pack.name}')">Create sticker</button>
+                    <button class="pack-delete" onclick="deletePack('${pack.name}')">Delete pack</button>
                 </div>
                 <div class="pack-stickers">`;
             pack.stickers.forEach(sticker => {
                 html += `<div class="sticker">
                     <img class="sticker-image" src="${sticker.preview}" />
-                    <div class="sticker-name">${sticker.name}</div>
+                    <div class="sticker-name">
+                    ${sticker.name}
+                    <div class="sticker-delete" onclick="deleteSticker('${pack.name}', '${sticker.name}')">🗑️</div>
+                    </div>
                 </div>`;
             });
             html += `</div></div>`;
@@ -64,5 +68,18 @@ contextBridge.exposeInMainWorld('setVar', {
         let previewFile = fs.copyFileSync(preview, "stickers/"+pack+"/"+name+"/preview.png");
         
        
+    },
+    deleteSticker: async (pack, sticker) => {
+        console.log("deleting sticker");
+        console.log(pack, sticker);
+        fs.rmSync("stickers/"+pack+"/"+sticker, { recursive: true });
+    },
+    deletePack: async (pack) => {
+        console.log("deleting pack");
+        console.log(pack);
+        fs.rmSync("stickers/"+pack, { recursive: true });
+    },
+    openFolder: async () => {
+        ipcRenderer.invoke('openFolder');
     }
 })

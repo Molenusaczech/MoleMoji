@@ -31,21 +31,24 @@ const render = async () => {
       <h2>${pack.name}</h2>
       <h3>by ${pack.author}</h3>
       </div>
+      <div class="stickerList">
       `;
 
       pack.stickers.forEach(sticker => {
         html += `<div class="sticker">`;
 
         html += `
-        <div onclick=copy("${sticker.main}")>
-        <img src="${sticker.preview}" class="stickerPreview" alt="${sticker.name}" title="${sticker.name}">
+        <div onclick=copy("${sticker.main}") class="sticker">
+        <img src="${sticker.preview}" class="stickerPreview" alt="${sticker.name}">
+        <div class="sticker-name">${sticker.name}</div> 
         </div>
         `;
 
         html += `</div>`;
       });
 
-      html += `</div>`;
+      html += ` </div>
+      </div>`;
     });
 
     document.getElementById("main").innerHTML = html;

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut, Tray, screen, Menu, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, globalShortcut, Tray, screen, Menu, ipcMain, dialog, shell } = require('electron')
 const fs = require('fs');
 const path = require('path');
 
@@ -23,6 +23,10 @@ function openSettings() {
         });
         console.log(path);
         return path;
+    });
+    ipcMain.removeHandler('openFolder');
+    ipcMain.handle('openFolder', () => {
+        shell.openPath(path.join(__dirname, 'stickers'));
     });
 
     win = new BrowserWindow({

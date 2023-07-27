@@ -1,8 +1,9 @@
-const { app, BrowserWindow, globalShortcut, Tray, screen, Menu, ipcMain } = require('electron')
+const { app, BrowserWindow, globalShortcut, Tray, screen, Menu, ipcMain, clipboard } = require('electron')
 const { openSettings } = require('./settings.js');
 const { openPoswiz } = require('./poswizard/posWiz.js');
 const path = require('path');
 let win;
+let lastClipboard = "";
 const fs = require('fs');
 require('@electron/remote/main').initialize()
 const { getStickers } = require('./getStickers.js');
@@ -59,8 +60,10 @@ app.whenReady().then(() => {
         console.log('Popup opened')
         if (isPlayerWindowOpened()) {
             win.close();
+            clipboard.writeText(lastClipboard);
         } else {
             createWindow();
+            lastClipboard = clipboard.readText();
         }
     })
 

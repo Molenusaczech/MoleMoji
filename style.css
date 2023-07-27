@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
+:root {
+    /* https://realtimecolors.com/?colors=fcfcfc-040606-45c3af-1f2d2b-78a19a */
+    --text: #f6f9f8;
+    --background: #252525;
+    --primary: #45c3af;
+    --secondary: #2e423f;
+    --accent: #78a19a;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -9,27 +18,29 @@
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
-    background-color: #f5f5f5;
+    background-color: var(--background);
 }
 
 .sticker {
-    width: 24vw;
-    height: 24vw;
-    /*background-color: blue;*/
-    float: left;
-    border: 1px solid blue;
+    width: 21vw;
+    height: 21vw;
+    border-radius: 2vw;
+    padding: 1vw;
+}
+
+.sticker:hover {
+    background-color: var(--secondary);
 }
 
 .pack:after {
     content: "";
     display: table;
     clear: both;
-    }
+}
 
 .pack {
     width: 100%;
     min-height: 40vw;
-    border: 1px solid black;
     position: relative;
     height: auto;
 }
@@ -38,9 +49,43 @@ h2,
 h3 {
     text-align: left;
     font-size: 5vvw;
+    color: var(--text);
 }
 
 .stickerPreview {
     width: 100%;
     height: 100%;
+}
+
+.stickerList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+header {
+    width: 100%;
+    height: 5vh;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sticker .sticker-name {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--primary);
+    color: var(--text);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.sticker:hover .sticker-name {
+    visibility: visible;
 }
