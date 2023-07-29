@@ -5,13 +5,32 @@ const path = require('path');
 let win;
 let lastClipboard = "";
 const fs = require('fs');
-require('@electron/remote/main').initialize()
 const { getStickers } = require('./getStickers.js');
+const dataPath = app.getPath('userData');
+
+if (require('electron-squirrel-startup')) app.quit();
+
+
+if (!fs.existsSync(dataPath + '/data')) {
+    fs.mkdirSync(dataPath + '/data');
+    fs.writeFileSync(dataPath + '/data/config.json', JSON.stringify({
+        "position": {
+            "x": 0,
+            "y": 0,
+            "w": 200,
+            "h": 200
+          }
+    }), 'utf8');
+}
+
+if (!fs.existsSync(dataPath + '/stickers')) {
+    fs.mkdirSync(dataPath + '/stickers');
+}
 
 const isPlayerWindowOpened = () => !win?.isDestroyed() && win?.isFocusable();
 
 const createWindow = () => {
-    const config = JSON.parse(fs.readFileSync('data/config.json', 'utf8'));
+    const config = JSON.parse(fs.readFileSync(dataPath+'/data/config.json', 'utf8'));
     
     ipcMain.removeHandler('getStickers');
     ipcMain.handle('getStickers', () => {

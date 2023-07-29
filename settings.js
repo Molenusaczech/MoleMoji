@@ -28,6 +28,10 @@ function openSettings() {
     ipcMain.handle('openFolder', () => {
         shell.openPath(path.join(__dirname, 'stickers'));
     });
+    ipcMain.removeHandler('getAppPath');
+    ipcMain.handle('getAppPath', () => {
+        return app.getPath('userData');
+    });
 
     win = new BrowserWindow({
         width: 450,
