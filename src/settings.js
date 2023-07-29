@@ -26,7 +26,7 @@ function openSettings() {
     });
     ipcMain.removeHandler('openFolder');
     ipcMain.handle('openFolder', () => {
-        shell.openPath(path.join(__dirname, 'stickers'));
+        shell.openPath(app.getPath('userData')+"\\stickers");
     });
     ipcMain.removeHandler('getAppPath');
     ipcMain.handle('getAppPath', () => {
