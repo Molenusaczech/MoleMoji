@@ -17,7 +17,7 @@ function openSettings() {
         let path = dialog.showOpenDialogSync({
             properties: ['openFile'],
             filters: [
-                { name: 'Images', extensions: ['jpg', 'png', 'gif'] },
+                { name: 'Images', extensions: ['jpg', 'png', 'gif', 'webp'] },
             ]
 
         });
@@ -48,7 +48,7 @@ function openSettings() {
         }
     })
 
-    win.loadFile('settings.html')
+    win.loadFile('src/settings.html')
 }
 
 module.exports = { openSettings }

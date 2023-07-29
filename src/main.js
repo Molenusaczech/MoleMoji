@@ -39,6 +39,14 @@ const createWindow = () => {
 
     });
 
+    ipcMain.removeHandler('fetchSticker');
+    ipcMain.handle('fetchSticker', async (test, packname, stickername) => {
+      
+
+        return fs.readFileSync(dataPath+"\\stickers\\"+packname+"\\"+stickername+"\\image.png", 'base64');
+
+    });
+
     win = new BrowserWindow({
         width: config.position.w,
         height: config.position.h,
@@ -55,7 +63,7 @@ const createWindow = () => {
         }
     })
 
-    win.loadFile('index.html')
+    win.loadFile('src/index.html')
 }
 
 app.whenReady().then(() => {

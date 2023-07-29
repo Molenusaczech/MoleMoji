@@ -1,5 +1,4 @@
 const { contextBridge, ipcRenderer, app } = require('electron');
-const { BrowserWindow } = require('@electron/remote/main')
 const fs = require('fs');
 const path = require('path');
 let window = undefined;

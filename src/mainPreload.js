@@ -6,5 +6,10 @@ contextBridge.exposeInMainWorld('main', {
         console.log(result)
         return result;
         //document.getElementById("stickers").innerHTML = html;
+    },
+    fetchSticker: async (packname, stickername) => {
+        console.log(packname, stickername);
+        let result = await ipcRenderer.invoke('fetchSticker', packname, stickername);
+        return result;
     }
 })
