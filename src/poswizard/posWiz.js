@@ -22,7 +22,7 @@ function openPoswiz() {
         win.close();
     });
 
-    const config = JSON.parse(fs.readFileSync(dataPath+'data/config.json', 'utf8'));
+    const config = JSON.parse(fs.readFileSync(dataPath+'/data/config.json', 'utf8'));
     win = new BrowserWindow({
         width: config.position.w,
         height: config.position.h,
