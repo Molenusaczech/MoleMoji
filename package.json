@@ -9,7 +9,10 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "author": "molenusaczech",
+  "author": {
+    "name": "Molenusaczech",
+    "email": "06krtek@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^6.2.1",
@@ -18,7 +21,7 @@
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
-    "electron": "^25.1.1"
+    "electron": "^25.3.2"
   },
   "dependencies": {
     "@electron/remote": "^2.0.10",

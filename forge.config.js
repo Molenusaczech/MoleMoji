@@ -1,12 +1,18 @@
+const path = require('path');
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: 'icon',
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        loadingGif: 'gifAnim.gif',
+        iconUrl: "https://raw.githubusercontent.com/Molenusaczech/MoleMoji/main/icon.ico",
+        setupIcon: 'icon.ico',
+      },
     },
     {
       name: '@electron-forge/maker-zip',
